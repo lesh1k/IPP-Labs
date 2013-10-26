@@ -1,0 +1,35 @@
+body{
+	margin: 0 auto;
+	padding: 0;
+	width: 800px;
+	font-family: monospace;
+	font-size: 14px;
+	background-color: blanchedalmond;
+}
+
+#scoreboard{
+	width: 200px;
+	height: 100px;
+	padding: 10px;
+	background-color: #8c8c8c;
+	color: white;
+	margin: 100px auto 0px;
+	border: 1px solid #1c4e33;
+	border-radius: 4px;
+}
+
+#scoreboard div{
+	display: inline-block;
+	text-align: center;
+	margin-right: 5px;
+}
+
+.block{
+	display: block!important;
+}
+
+#scoreboard #info{
+	display: none;
+	color: orange;
+	margin: 30px;
+}	
