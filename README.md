@@ -4,7 +4,7 @@ IPP-Labs
 Lab #1
 ======
 
-Problem #1
+*Problem #1
 
 GUI application written in Python [Music Downloader]. Allows doing one search request per
 app launch and downloading any music tracks found, in the range of displayed ones.
@@ -20,11 +20,11 @@ Caching proxy: application determines if there already are any downloaded files 
                does not download the file. Instead it just lets the user know that 
                "Download canceled. Track: TRACK_NAME already available"
 
-Problem #2
+*Problem #2
 
 Working as expected. The structure does not seem to be compliant with the requirements stated in
 the assignment. Rebuilding...
 
-Problem #3
+*Problem #3
 
 As with Problem #3. Restructuring in order to meet all the requirements.
