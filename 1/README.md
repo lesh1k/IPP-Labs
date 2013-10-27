@@ -29,4 +29,9 @@ the player triggers "player_turn_finished" event, that is handled by the mediato
 Problem #3
 ==========
 
-Restructuring in order to meet all the requirements.
+- Game is subscribed to "keyup" events. It controls the game by generating events: "new_player", "try_to_play".
+- Mediator knows about the scoreboard and players. It is subscribed to all available events,
+thus is controlling the flow of information.
+- Scoreboard knows nothing, it just displays whatever it is told to by the mediator.
+- Players know their score and if they have already played or not. On one's turn end,
+the player triggers "player_turn_finished" event, that is handled by the mediator.
