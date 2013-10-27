@@ -21,8 +21,10 @@ Caching proxy: application determines if there already are any downloaded files 
 Problem #2
 ==========
 
-Working as expected. The structure does not seem to be compliant with the requirements stated in
-the assignment. Rebuilding...
+- Mediator knows about the scoreboard and players.
+- Scoreboard knows nothing, it just displays whatever it is told to by the mediator.
+- Players know their score and if they have already played or not. On one's turn end,
+the player triggers "player_turn_finished" event, that is handled by the mediator.
 
 Problem #3
 ==========

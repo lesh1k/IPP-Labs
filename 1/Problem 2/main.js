@@ -9,24 +9,15 @@ function Player(keycode){
 	this.started = false;
 	this.played = false;
 	this.Play = Play;
-	this.custom_event = new CustomEvent('player_turn_finished', {detail:{pid:this.ID}});
+	
 	function Play(time_limit){
 		if(this.started == false){
-			this.started = new Date();
-		}
-		if((new Date()).getTime()-this.started.getTime() < time_limit){
+			this.started = true;
 			this.score++;
+			setTimeout(function(){$.event.trigger({type: "player_turn_finished", pid: this.keycode})}, time_limit);
 		}
 		else{
-			this.started = false;
-			this.played = true;
-			$.event.trigger({
-				type: "player_turn_finished",
-				message: "Hello World!",
-				time: new Date(),
-				detail:{pid:this.ID}
-			});
-			// $(this).trigger(this.custom_event);
+			this.score++;
 		}
 	}
 }
@@ -53,30 +44,36 @@ function Scoreboard(){
 	function ShowInfo(message){
 		$("#info").text(message);
 		$("#info").fadeIn('fast');
-		window.setTimeout(function(){$("#info").fadeOut('fast');}, 1000);
+		window.setTimeout(function(){$("#info").fadeOut('fast');}, 1200);
 	}
 }
 
 function Mediator(){
-	this.players = [(new Player(48)), (new Player(49))]; //Array of players
+	this.players = [(new Player(49)), (new Player(48))]; //Array of players
 	this.scoreboard = new Scoreboard();
 	this.current_player = 0;
 	this.total_players = this.players.length;
-	$(this).bind('player_turn_finished', function(e){this.scoreboard.ShowInfo('Turn ended'); this.current_player++;});
+	self = this;
+	$(document).on('player_turn_finished', function(){
+			self.players[self.current_player].started = false;
+			self.players[self.current_player].played = true;
+			self.scoreboard.ShowScore(self.current_player+1, self.players[self.current_player].score, self.players[self.current_player].started);
+			self.scoreboard.ShowInfo('Turn ended');
+			self.current_player++;
+		});
 	this.PlayGame = PlayGame;
 	this.PlayRound = PlayRound;
+	this.InitBoard = InitBoard;
 	function PlayRound(keycode){
-		if(this.players[this.current_player].played){
-			this.current_player++;
-		}
-		if(this.current_player < this.total_players){
-			this.scoreboard.ShowScore(this.current_player+1, this.players[this.current_player].score, !this.players[this.current_player].played);
-			if(this.players[this.current_player].keycode==keycode){
-				this.players[this.current_player].Play(this.turn_length);
+		pid = this.current_player;//player index
+		if(pid < this.total_players){
+			if(this.players[pid].keycode==keycode){
+				this.players[pid].Play(this.turn_length);
 			}
 			else{
-				this.scoreboard.ShowInfo('Player #'+(this.current_player+1)+' turn!');
+				this.scoreboard.ShowInfo('Player #'+(pid+1)+' turn!');
 			}
+			this.scoreboard.ShowScore(pid+1, this.players[pid].score, this.players[pid].started);
 		}
 		else{
 			this.scoreboard.ShowInfo('Game Finished');
@@ -85,17 +82,24 @@ function Mediator(){
 	
 	function PlayGame(turn_length){
 		this.turn_length = turn_length;
-		test=this;
+		self=this;
 		$('html').keyup(function(e){
-			test.PlayRound(e.keyCode);
+			self.PlayRound(e.keyCode);
 			console.log(e.keyCode);
 		});
+	}
+
+	function InitBoard(){
+		for(var i=0;i<this.total_players;i++){
+			this.scoreboard.ShowScore(i+1, this.players[i].score, this.players[i].started);
+		}
 	}
 }
 
 mediator = new Mediator();
 
 $(document).ready(function(){
+	mediator.InitBoard();
 	mediator.scoreboard.ShowInfo('Let the game begin!');
 	mediator.PlayGame(5000);
 });
