@@ -8,8 +8,9 @@ body{
 }
 
 #scoreboard{
-	width: 200px;
-	height: 100px;
+	width: 400px;
+	height: auto;
+	min-height: 150px;
 	padding: 10px;
 	background-color: #8c8c8c;
 	color: white;
@@ -19,13 +20,13 @@ body{
 }
 
 #scoreboard div{
-	display: inline-block;
+	/*display: inline-block;*/
 	text-align: center;
 	margin-right: 5px;
 }
 
-.block{
-	display: block!important;
+#info{
+	font-size: 14px;
 }
 
 #scoreboard #info{
