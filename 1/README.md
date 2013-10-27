@@ -29,4 +29,4 @@ the player triggers "player_turn_finished" event, that is handled by the mediato
 Problem #3
 ==========
 
-As with Problem #3. Restructuring in order to meet all the requirements.
+Restructuring in order to meet all the requirements.
