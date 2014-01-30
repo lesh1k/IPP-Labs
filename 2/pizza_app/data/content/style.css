@@ -239,3 +239,7 @@ input[type="checkbox"]{
 	font-weight: bold;
 	margin-right: 30px;
 }
+
+.step-3 ul.meat{
+	margin-right: -30px;
+}
