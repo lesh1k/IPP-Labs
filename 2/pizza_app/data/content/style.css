@@ -1,7 +1,7 @@
 body{
 	background-color: #e74c3c;
-	font-family: Tahoma;
-	font-size: 14px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 16px;
 	color: #ecf0f1;
 	padding: 0px;
 	margin: 0px;
@@ -14,6 +14,7 @@ body{
 	position: relative;
 	padding: 10px 5px;
 	overflow: hidden;
+	overflow-y: auto;
 }
 
 .step-2,
@@ -38,6 +39,7 @@ body{
 	border:2px solid #c0392b;
 	border-radius: 3px;
 	cursor: pointer;
+	margin-bottom: 5px;
 }
 
 .pizza .thumbnail.selected{
@@ -74,9 +76,9 @@ body{
 
 .step-4 .pizza,
 .step-3 .pizza{
-	width: 467px;
+	width: 450px;
 	height: 220px;
-	margin-left: 10px;
+	margin-left: 19px;
 	margin-right: 10px;
 	margin-bottom: 15px;
 }
@@ -90,6 +92,8 @@ ul{
 	display: inline-block;
 	margin-top: 0px;
 	float: left;
+	padding-left: 20px;
+	font-weight: bold;
 }
 
 ul.veggies{
@@ -99,9 +103,16 @@ ul.veggies{
 
 ul li{
 	cursor: pointer;
+	font-weight: normal;
+	font-style: italic;
+}
+
+ul li:first-child{
+	margin-top: 5px;
 }
 
 .navigation{
+	margin-right: 18px;
 	float: right;
 }
 
@@ -115,4 +126,116 @@ ul li{
 
 .clear{
 	clear: both;
+}
+
+.step-1 input{
+	outline: none;
+	border: none;
+	background-color: transparent;
+	border-bottom: 1px solid rgba(236,240,241,0.4);
+	color: #ecf0f1;
+	padding-left: 5px;
+	padding-right: 5px;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+button{
+	background-color: #ecf0f1;
+	border: 1px solid #A7A7A7;
+	font-size: 15px;
+	border-radius: 3px;
+	line-height: 18px;
+	color: #3D3D3D;
+	cursor: pointer;
+}
+
+button:disabled{
+	cursor: default;
+	color: #838383;
+}
+
+button:disabled:hover{
+	cursor: default;
+	color: #838383;
+	background-color: #ecf0f1;
+	box-shadow: none;
+}
+
+button:hover{
+	box-shadow: 0px 0px 6px #ecf0f1;
+	color: #ecf0f1;
+	background-color: #e74c3c;
+}
+
+.message{
+	margin-left: 18px;
+	border-bottom: 1px solid #ecf0f1;
+}
+
+.pizza .title{
+	float: left;
+}
+
+.pizza .price{
+	float: right;
+}
+
+.step-4 .message{
+	margin-bottom: 10px;
+}
+
+.step-1 label{
+	margin-left: 18px;
+}
+
+input[type="checkbox"]{
+	margin-right: 4px;
+}
+
+.step-5 h2{
+	text-align: center;
+}
+
+.step-5 h2:last-child{
+	border-bottom: none;
+}
+
+.warning{
+	display: none;
+	clear: both;
+	text-align: center;
+	margin-top: 50px;
+	font-weight: bold;
+	font-size: 18px;
+	border: 2px dashed #ecf0f1;
+	margin-left: 18px;
+	margin-right: 20px;
+}
+
+.step-4 ul{
+	float: none;
+	display: block;
+	margin-left: 18px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ecf0f1;
+}
+
+.step-4 .pizza{
+	border-bottom: 1px solid #ecf0f1;
+}
+
+.addons{
+	width: 470px;
+}
+
+.step-4 .addons li span,
+.step-4 .total span{
+	float: right;
+}
+
+.step-4 .total{
+	margin-left: 18px;
+	font-weight: bold;
+	margin-right: 30px;
 }
