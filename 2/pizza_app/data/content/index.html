@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Pizzorder</title>
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+        <script type="text/javascript" src="js/custom.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="step-1">
+                <h2>Hello! What's your name?</h2>
+                <label for="name">Name:</label>
+                <input type="text" name="name"/>
+            </div>
+            <div class="step-2">
+                <h2 class="message"></h2>
+                <div class="pizzas">
+                    <div class="pizza pizza_1">
+                        <div class="thumbnail"></div>
+                        <div class="description">
+                            <div class="title">Normalio pizzario</div>
+                            <div class="price"><span>60</span> MDL</div>
+                        </div>
+                    </div>
+                    <div class="pizza pizza_2">
+                        <div class="thumbnail"></div>
+                        <div class="description">
+                            <div class="title">Green pizza</div>
+                            <div class="price"><span>15</span> MDL</div>
+                        </div>
+                    </div>
+                    <div class="pizza pizza_3">
+                        <div class="thumbnail"></div>
+                        <div class="description">
+                            <div class="title">Yummy</div>
+                            <div class="price"><span>90</span> MDL</div>
+                        </div>
+                    </div>
+                    <div class="pizza pizza_4">
+                        <div class="thumbnail"></div>
+                        <div class="description">
+                            <div class="title">Recursive pizza</div>
+                            <div class="price"><span>180</span> MDL</div>
+                        </div>
+                    </div>
+                    <div class="pizza pizza_5">
+                        <div class="thumbnail"></div>
+                        <div class="description">
+                            <div class="title">Le meat pizza</div>
+                            <div class="price"><span>140</span> MDL</div>
+                        </div>
+                    </div>
+                    <div class="pizza pizza_6">
+                        <div class="thumbnail"></div>
+                        <div class="description">
+                            <div class="title">Chef pizza</div>
+                            <div class="price"><span>150</span> MDL</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="step-3">
+                <div class="pizza"></div>
+                <div class="extra-options">
+                    <ul class="cheese">Cheese (max. 3)
+                        <li><input type="checkbox" name="cheese" value="feta">Feta<span class="price"> [8</span> MDL]</li>
+                        <li><input type="checkbox" name="cheese" value="parmesan">Parmesan<span class="price"> [10</span> MDL]</li>
+                        <li><input type="checkbox" name="cheese" value="mozarella">Mozarella<span class="price"> [7</span> MDL]</li>
+                        <li><input type="checkbox" name="cheese" value="dor blue">Dor Blue<span class="price"> [11</span> MDL]</li>
+                        <li><input type="checkbox" name="cheese" value="edam">Edam<span class="price"> [8</span> MDL]</li>
+                        <li><input type="checkbox" name="cheese" value="brinza">Brinza<span class="price"> [8</span> MDL]</li>
+                    </ul>
+                    <ul class="veggies">Veggies (max. 5)
+                        <li><input type="checkbox" name="veggies" value="fresh mushrooms">Fresh mushrooms<span class="price"> [8</span> MDL]</li>
+                        <li><input type="checkbox" name="veggies" value="smoked mushrooms">Smoked mushrooms<span class="price"> [8</span> MDL]</li>
+                        <li><input type="checkbox" name="veggies" value="red onion">Red onion<span class="price"> [8</span> MDL]</li>
+                        <li><input type="checkbox" name="veggies" value="tomatoes">Tomatoes<span class="price"> [12</span> MDL]</li>
+                        <li><input type="checkbox" name="veggies" value="garlic">Garlic<span class="price"> [5</span> MDL]</li>
+                        <li><input type="checkbox" name="veggies" value="rucola">Rucola<span class="price"> [8</span> MDL]</li>
+                        <li><input type="checkbox" name="veggies" value="marinated Gogoshars">Marinated Gogoshars<span class="price"> [22</span> MDL]</li>
+                        <li><input type="checkbox" name="veggies" value="corn">Corn<span class="price"> [8</span> MDL]</li>
+                        <li><input type="checkbox" name="veggies" value="parsley">Parsley<span class="price"> [8</span> MDL]</li>
+                        <li><input type="checkbox" name="veggies" value="chili pepper">Chili pepper<span class="price"> [8</span> MDL]</li>
+                    </ul>
+                    <ul class="meat">Meat (max. 2)
+                        <li><input type="checkbox" name="meat" value="bacon">Bacon<span class="price"> [18</span> MDL]</li>
+                        <li><input type="checkbox" name="meat" value="prosciutto">Prosciutto<span class="price"> [12</span> MDL]</li>
+                        <li><input type="checkbox" name="meat" value="salami">Salami<span class="price"> [8</span> MDL]</li>
+                        <li><input type="checkbox" name="meat" value="chicken breast">Chicken Breast<span class="price"> [11</span> MDL]</li>
+                        <li><input type="checkbox" name="meat" value="ham">Ham<span class="price"> [10</span> MDL]</li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="step-4">
+                <h2 class="message">Your Order:</h2>
+                <div class="pizza"></div>
+                <div class="addons"></div>
+                <div class="total"></div>
+            </div>
+            <div class="step-5">
+                <h2 class="message">Thank you for your order!</h2>
+            </div>
+            
+            <div class="navigation">
+                <button type="button" name="back" disabled="true"><< Back</button>
+                <button type="button" name="next">Next >></button>
+            </div>
+        </div>
+    </body>
+</html>
