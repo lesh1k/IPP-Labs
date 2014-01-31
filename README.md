@@ -13,10 +13,10 @@ Lab #1
 Lab #2
 ======
 
-In progress...
+App built. Reviewing code!
 
 
 Lab #3
 ======
 
-In progress...
+DONE!
