@@ -121,7 +121,7 @@ ul li:first-child{
 }
 
 .step-1{
-	margin-bottom: -30px;
+	margin-bottom: -35px;
 }
 
 .clear{
@@ -242,4 +242,8 @@ input[type="checkbox"]{
 
 .step-3 ul.meat{
 	margin-right: -30px;
+}
+
+.navigation{
+	margin-top: 10px;
 }

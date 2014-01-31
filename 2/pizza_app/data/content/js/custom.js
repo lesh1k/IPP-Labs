@@ -1,4 +1,4 @@
-var userName;
+var userName='';
 var curStep = 1;
 var selectedPizza;
 var orderID = 1 + Math.floor(Math.random() * 999);
@@ -36,45 +36,114 @@ pricelist.veggies['corn'] = 8;
 pricelist.veggies['parsley'] = 8;
 pricelist.veggies['chili pepper'] = 8;
 
+
+
+function write_lists(){
+    var list = "";
+    var full_list = "";
+    var total_price = 0;
+
+    for (var i = 0; i < extraCheese.length; i++ ) {
+        list += "<li>"  + extraCheese[i] + "<span>" + pricelist.cheese[extraCheese[i]] + " MDL</span></li>";
+        total_price += pricelist.cheese[extraCheese[i]];
+    }
+    if(i>0){
+    	full_list += "<ul class='cheese'>Cheese"+list+"</ul>";
+    }
+    list = "";
+
+    for (var i = 0; i < extraMeat.length; i++ ) {
+        list += "<li>"  + extraMeat[i] + "<span>" + pricelist.meat[extraMeat[i]] + " MDL</span></li>";
+        total_price += pricelist.meat[extraMeat[i]];
+    }
+    if(i>0){
+	    full_list += "<ul class='meat'>Meat"+list+"</ul>";
+    }
+    list = "";
+
+    for (var i = 0; i < extraVeggies.length; i++ ) {
+        list += "<li>"  + extraVeggies[i] + "<span>" + pricelist.veggies[extraVeggies[i]] + " MDL</span></li>";
+        total_price += pricelist.veggies[extraVeggies[i]];
+    }
+    if(i>0){
+	    full_list += "<ul class='veggies'>Veggies"+list+"</ul>";
+	}
+    list = "";
+
+    total_price += pizzaPrice;
+    $(".step-4 .addons").html(full_list);
+    $(".step-4 .total span").text(total_price+" MDL");
+}
+
+function prepare_next_step_2(){
+	userName = $('input[name="name"]').val();
+	if(userName.length <= 0){
+		$(".warning").text("Name is mandatory.");
+		$(".warning").fadeIn(300);
+		window.setTimeout(function(){
+			$(".warning").fadeOut(300);
+		}, 1500);
+		return false;
+	}
+	else{
+		$(".step-2 .message").text("Choose your pizza, "+userName+"!");
+		$('button[name="back"]').attr("disabled",false);
+		$('button[name="next"]').attr("disabled",true);
+		return true;
+	}
+}
+
+function prepare_next_step_4(){
+	write_lists();
+	return true;
+}
+
+function prepare_next_step_5(){
+	$(".navigation").hide();
+	$(".step-5 .message .order_id").text(orderID);
+	return true;
+}
+
+function transition_forward(){
+	$(".step-"+curStep).slideUp(500);
+	curStep += 1;
+	$(".step-"+curStep).slideDown(500);
+}
+
+function next_step(){
+	if(curStep===1 && prepare_next_step_2()
+		|| curStep===2 || curStep===3 && prepare_next_step_4()
+		|| curStep===4 && prepare_next_step_5() ){
+		transition_forward();
+	}
+	return;
+}
+
+function prepare_prev_step_2(){
+	$('button[name="back"]').attr("disabled",true);
+	$('button[name="next"]').attr("disabled",false);
+}
+
+function transition_backwards(){
+	$(".step-"+curStep).slideUp(500);
+	curStep -= 1;
+	$(".step-"+curStep).slideDown(500);
+}
+
+function prev_step(){
+	if(curStep === 2){
+		prepare_prev_step_2();
+	}
+		transition_backwards();
+}
+
 $(document).ready(function(){
 	$('button[name="next"]').click(function(){
-		if(curStep === 1){
-			userName = $('input[name="name"]').val();
-			if(userName.length <= 0){
-				$(".warning").text("Name is mandatory.");
-				$(".warning").fadeIn(300);
-				window.setTimeout(function(){
-					$(".warning").fadeOut(300);
-				}, 1500);
-				return;
-			}
-			$(".step-2 .message").text("Choose your pizza, "+userName+"!");
-			$('button[name="back"]').attr("disabled",false);
-			$('button[name="next"]').attr("disabled",true);
-		}
-		else if(curStep === 3){
-			if(extraVeggies.length > 0){
-				write_lists();
-			}
-		}
-		else if(curStep === 4){
-			$(".navigation").hide();
-			$(".step-5 .message .order_id").text(orderID);
-		}
-		$(".step-"+curStep).slideUp(500);
-		curStep += 1;
-		$(".step-"+curStep).slideDown(500);
+		next_step();
 	});
 
 	$('button[name="back"]').click(function(){
-		if(curStep === 2){
-			userName = $('input[name="name"]').val(userName);
-			$('button[name="back"]').attr("disabled",true);
-			$('button[name="next"]').attr("disabled",false);
-		}
-		$(".step-"+curStep).slideUp(500);
-		curStep -= 1;
-		$(".step-"+curStep).slideDown(500);
+		prev_step();
 	});
 
 	$(".pizza .thumbnail").click(function(){
@@ -144,34 +213,3 @@ $(document).ready(function(){
 		}
 	});
 });
-
-function write_lists(){
-    var list = "";
-    var full_list = "";
-    var total_price = 0;
-
-    for (var i = 0; i < extraCheese.length; i++ ) {
-        list += "<li>"  + extraCheese[i] + "<span>" + pricelist.cheese[extraCheese[i]] + " MDL</span></li>";
-        total_price += pricelist.cheese[extraCheese[i]];
-    }
-    full_list += "<ul class='cheese'>Cheese"+list+"</ul>";
-    list = "";
-
-    for (var i = 0; i < extraMeat.length; i++ ) {
-        list += "<li>"  + extraMeat[i] + "<span>" + pricelist.meat[extraMeat[i]] + " MDL</span></li>";
-        total_price += pricelist.meat[extraMeat[i]];
-    }
-    full_list += "<ul class='meat'>Meat"+list+"</ul>";
-    list = "";
-
-    for (var i = 0; i < extraVeggies.length; i++ ) {
-        list += "<li>"  + extraVeggies[i] + "<span>" + pricelist.veggies[extraVeggies[i]] + " MDL</span></li>";
-        total_price += pricelist.veggies[extraVeggies[i]];
-    }
-    full_list += "<ul class='veggies'>Veggies"+list+"</ul>";
-    list = "";
-
-    total_price += pizzaPrice;
-    $(".step-4 .addons").html(full_list);
-    $(".step-4 .total span").text(total_price+" MDL");
-}
